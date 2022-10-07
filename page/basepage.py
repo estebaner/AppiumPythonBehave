@@ -8,7 +8,7 @@ class Base:
 
     def __init__(self):
         config = Config()
-        config.launch_app()
+        config.launch_app() #TODO: Cambiar por la configuración de plataforma
         self.base_driver = config.get_driver()
 
     def generate_element_identification_method(self, element_identifier_type):

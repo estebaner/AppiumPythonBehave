@@ -11,3 +11,10 @@ iPhoneX:
   platformVersion: 11.2
   deviceName: iPhoneX
   udid: 1BB29D3C-BB17-42FF-A3C2-48070E2894D8
+
+Pixel4:
+  platformName: Android
+  deviceName: emulator-5556,
+  avd: Pixel_4_API_31,
+  app: app-development-release.apk
+  appPackage: com.allinbiking.mobile.dev

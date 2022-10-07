@@ -5,7 +5,7 @@ from commonFunctions.session_handler import Session
 
 def before_feature(context, feature):
     print("==============================> In before feature")
-    Config.start_appium_server()
+    # Config.start_appium_server()
 
 
 def after_feature():

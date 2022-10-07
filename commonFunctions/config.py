@@ -1,4 +1,4 @@
-import appscript
+# import appscript
 from commonFunctions.util import Utils
 from appium import webdriver
 import time
@@ -6,13 +6,12 @@ from commonFunctions.session_handler import Session
 
 
 class ConfigSetup:
-
     current_config = {}
 
-    @staticmethod
+    @staticmethod #TODO: Agregar script para levantar el servidor correctamente.
     def start_appium_server():
         if not Utils.check_appium_is_already_running():
-            appscript.app('terminal').do_script('appium --address 127.0.0.1 --port 4723')
+            # appscript.app('terminal').do_script('appium --address 127.0.0.1 --port 4723')
             time.sleep(4)
             print("Appium is started")
         else:
@@ -23,25 +22,24 @@ class ConfigSetup:
 
     def launch_app(self):
 
-        app_name = ConfigSetup.current_config['appName']
         platform_name = ConfigSetup.current_config['platformName']
-        platform_version = ConfigSetup.current_config['platformVersion']
         device_name = ConfigSetup.current_config['deviceName']
-        udid = ConfigSetup.current_config['udid']
+        avd = ConfigSetup.current_config['avd']
+        app = ConfigSetup.current_config['app']
+        app_package = ConfigSetup.current_config['appPackage']
 
         print("Launching app with below config, for scenario : {}".format(ConfigSetup.current_config['scenario_name']))
-        print("app {0} platformName {1} platformVersion {2} deviceName {3} udid {4}".format(app_name, platform_name,
-                                                                                            platform_version, device_name,
-                                                                                            udid))
+        print("app {0} platformName {1} platformVersion {2} deviceName {3} udid {4}".format(platform_name, device_name,
+                                                                                            avd,
+                                                                                            app,
+                                                                                            app_package))
+
         dc = {
-            "app": "/Users/nagendraa/Nagendra/preparationDocs/apps/{}".format(app_name),
             "platformName": "{}".format(platform_name),
-            "platformVersion": "{}".format(platform_version),
             "deviceName": "{}".format(device_name),
-            "automationName": "appium",
-            "udid": "{}".format(udid),
-            # "noReset": True,
-            "newCommandTimeout": 60
+            "avd": "{}".format(avd),
+            "app": "/users/usuario/Desktop/{}".format(app),
+            "appPackage": "{}".format(app_package)
         }
 
         self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", dc)
@@ -49,6 +47,3 @@ class ConfigSetup:
 
     def get_driver(self):
         return self.driver
-
-
-
