@@ -1,4 +1,4 @@
-# import appscript
+import appscript
 from commonFunctions.util import Utils
 from appium import webdriver
 import time
@@ -11,7 +11,7 @@ class ConfigSetup:
     @staticmethod #TODO: Agregar script para levantar el servidor correctamente.
     def start_appium_server():
         if not Utils.check_appium_is_already_running():
-            # appscript.app('terminal').do_script('appium --address 127.0.0.1 --port 4723')
+            appscript.app('terminal').do_script('appium --address 127.0.0.1 --port 4723')
             time.sleep(4)
             print("Appium is started")
         else:

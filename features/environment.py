@@ -11,7 +11,9 @@ def before_feature(context, feature):
 def after_feature(context, feature):
     print("==============================> In after feature")
     if feature.status == 'passed':
-        print(f"✓ Feature '{feature.name}' passed with success")
+        print(f"✓ Feature '{feature.name}' successfully passed")
+    if feature.status == 'failed':
+        print(f"✗ Feature '{feature.name}' failed")
 
 def before_scenario(context, scenario):
     print("==============================> In before scenario")
